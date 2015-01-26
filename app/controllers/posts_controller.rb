@@ -10,6 +10,12 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "post" + @post.id.to_s
+      end
+    end
   end
 
   # GET /posts/new
